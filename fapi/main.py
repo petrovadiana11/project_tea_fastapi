@@ -34,12 +34,12 @@ def create_product(product: ProductBase, category_name: str, db: Session = Depen
     db.refresh(db_product)
     return db_product
 
-@app.get("/category/kateg")
+@app.get("/category/kateg") #получение категорий 
 def read_category(db: Session = Depends(get_db)):
     category = db.query(Category).all()
     return category
 
-@app.get("/product/prod")
+@app.get("/product/prod") #получение продуктов
 def read_product(product: int, db: Session = Depends(get_db)):
     product = db.query(Product).filter(Product.id == product).all()
     return product
